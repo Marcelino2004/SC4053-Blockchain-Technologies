@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SC4053-Blockchain
 
-## Getting Started
+## Overview
+This project is a decentralized marketplace for exchanging digital assets on the Ethereum blockchain. Rather than relying on a central exchange to hold funds or approve trades, users interact directly through smart contracts, retaining full control of their tokens. By connecting a wallet like MetaMask, individuals can buy, sell, and swap assets directly from their own accounts.
 
-First, run the development server:
+The system uses a hybrid trading approach: an Automated Market Maker provides fast, on-chain swaps for immediate trades, while a separate off-chain order engine (implemented in Go) supports more advanced order types like limit and stop orders. This setup delivers a balance of convenience and control, enabling both quick transactions and precise order execution—without sacrificing decentralization or causing unnecessary gas costs.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tools used
+- Solidity: Writing the smart contracts
+- Go: Handling all the backend logic
+- Nextjs: Creating the frontend visuals
+- Hardhat: Framework for local testnet deployment
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features Implemented
+- Wallet Connection: Users can link a Web3 wallet (such as MetaMask) to interact directly with the exchange and manage their transactions without relinquishing control of their assets.
+- Token Deployment: The platform supports creating new tokens that follow the ERC-20 standard, allowing anyone to launch and manage their own digital assets.
+- Order Types:
+  - Market Orders: Execute trades immediately at the best available price through the Automated Market Maker mechanism.
+  - Limit Orders: Orders are carried out only when the market reaches the user’s chosen price.
+  - Stop Orders: Orders activate only when a predefined threshold is hit; these are monitored off-chain until conditions are satisfied.
+- Partial Order: Orders can be partially completed if only part of the requested trade volume is available at the moment, ensuring no opportunity goes to waste.
+- Cancel Order: Open orders remain under the user’s control and can be withdrawn or canceled at any time before execution.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Pre-requisites
+Modules to be installed before running the project:
+- Node.js: v14.x or later
+- Go: v1.16 or later
+- Hardhat: yarn install --save-dev hardhat or npm install --save-dev hardhat
+- MetaMask: Install the MetaMask browser extension for connecting with the DEX.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Custom Network for Metamask Set-up
+- Network Name: Localhost
+- New RPC URL: http://localhost:8545
+- Chain ID: 1337
 
-## Learn More
+## Set-up Instructions
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Clone the Repository
+bash
+git clone https://github.com/yourusername/DEXChange.git
+git submodule update --init --recursive
+cd DEXChange
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 2. Install Dependencies
+- Frontend (Next.js):
+bash
+cd sc4053-frontend
+yarn install
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Backend (Go):
+bash
+cd go-orderbook
+go mod tidy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+### 3. Compile and Deploy Smart Contracts
+- In the blkchain-orderbook directory, install Hardhat and compile the Solidity smart contracts:
+bash
+cd blkchain-orderbook
+yarn install
+yarn hardhat compile
+
+
+- Still in the blkchain-orderbook directory, deploy the contracts to a local Ethereum testnet using Hardhat:
+bash
+yarn hardhat node
+yarn hardhat run scripts/deploy.js --network localhost
+
+
+- Add liquidity to the pool (to try and trade)
+bash
+yarn hardhat run scripts/createLP --network localhost
+
+
+4. Configure Environment Variables
+- Create .env files for both the frontend and backend with the necessary environment variables.
+
+For Backend (go-orderbook/.env):
+dotenv
+INFURA_API_URL=<Your Infura Project URL>
+PRIVATE_KEY=<Your Private Key for Deployment>
+CONTRACT_ADDRESS=<Deployed Smart Contract Address>
+
+For Frontend (sc4053-frontend/.env.local):
+dotenv
+NEXT_PUBLIC_APP_URL=<Your application URL>
+NEXT_PUBLIC_WEB3_PROVIDER_URL=<Default RPC URL>
+
+
+5. Start the Backend (Go)
+- Go to the backend directory and start the Go server:
+Go
+cd ..  #If you are still in the blkchain-orderbook directory
+cd go-orderbook
+go run main.go
+
+
+6. Start the Frontend (Next.js)
+- Go to the frontend directory and run the development server:
+Javascript
+cd sc4053-frontend
+yarn run dev
+
+The frontend will run on http://localhost:3000. Copy and paste this in the web browser to see and interact with the frontend.
