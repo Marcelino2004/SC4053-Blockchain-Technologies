@@ -36,43 +36,43 @@ Modules to be installed before running the project:
 ## Set-up Instructions
 
 ### 1. Clone the Repository
-bash
+```bash
 git clone https://github.com/yourusername/DEXChange.git
 git submodule update --init --recursive
 cd DEXChange
-
+```
 
 ### 2. Install Dependencies
 - Frontend (Next.js):
-bash
+```bash
 cd sc4053-frontend
 yarn install
-
+```
 
 - Backend (Go):
-bash
+```bash
 cd go-orderbook
 go mod tidy
-
+```
 
 ### 3. Compile and Deploy Smart Contracts
 - In the blkchain-orderbook directory, install Hardhat and compile the Solidity smart contracts:
-bash
+```bash
 cd blkchain-orderbook
 yarn install
 yarn hardhat compile
-
+```
 
 - Still in the blkchain-orderbook directory, deploy the contracts to a local Ethereum testnet using Hardhat:
-bash
+```bash
 yarn hardhat node
 yarn hardhat run scripts/deploy.js --network localhost
-
+```
 
 - Add liquidity to the pool (to try and trade)
-bash
+```bash
 yarn hardhat run scripts/createLP --network localhost
-
+```
 
 4. Configure Environment Variables
 - Create .env files for both the frontend and backend with the necessary environment variables.
@@ -84,23 +84,24 @@ PRIVATE_KEY=<Your Private Key for Deployment>
 CONTRACT_ADDRESS=<Deployed Smart Contract Address>
 
 For Frontend (sc4053-frontend/.env.local):
-dotenv
+```dotenv
 NEXT_PUBLIC_APP_URL=<Your application URL>
 NEXT_PUBLIC_WEB3_PROVIDER_URL=<Default RPC URL>
-
+```
 
 5. Start the Backend (Go)
 - Go to the backend directory and start the Go server:
-Go
+```Go
 cd ..  #If you are still in the blkchain-orderbook directory
 cd go-orderbook
 go run main.go
-
+```
 
 6. Start the Frontend (Next.js)
 - Go to the frontend directory and run the development server:
-Javascript
+```Javascript
 cd sc4053-frontend
 yarn run dev
+```
 
 The frontend will run on http://localhost:3000. Copy and paste this in the web browser to see and interact with the frontend.
