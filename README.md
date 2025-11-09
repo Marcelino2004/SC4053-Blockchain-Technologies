@@ -99,7 +99,7 @@ go run main.go
 
 6. Start the Frontend (Next.js)
 - Go to the frontend directory and run the development server:
-'''Javascript
+```Javascript
 cd sc4053-frontend
 npm run dev
 ```
