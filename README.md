@@ -25,6 +25,7 @@ The system uses a hybrid trading approach: an Automated Market Maker provides fa
 Modules to be installed before running the project:
 - Node.js: v14.x or later
 - Go: v1.16 or later
+- Yarn: Latest stable version (Or can opt to use npm instead)
 - Hardhat: yarn install --save-dev hardhat or npm install --save-dev hardhat
 - MetaMask: Install the MetaMask browser extension for connecting with the DEX.
 
