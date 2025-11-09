@@ -12,14 +12,14 @@ The system uses a hybrid trading approach: an Automated Market Maker provides fa
 - Hardhat: Framework for local testnet deployment
 
 ## Features Implemented
-Wallet Connection: Users can link a Web3 wallet (such as MetaMask) to interact directly with the exchange and manage their transactions without relinquishing control of their assets.
-Token Deployment: The platform supports creating new tokens that follow the ERC-20 standard, allowing anyone to launch and manage their own digital assets.
-Order Types:
-- Market Orders: Execute trades immediately at the best available price through the Automated Market Maker mechanism.
-- Limit Orders: Orders are carried out only when the market reaches the user’s chosen price.
-- Stop Orders: Orders activate only when a predefined threshold is hit; these are monitored off-chain until conditions are satisfied.
-Partial Order: Orders can be partially completed if only part of the requested trade volume is available at the moment, ensuring no opportunity goes to waste.
-Cancel Order: Open orders remain under the user’s control and can be withdrawn or canceled at any time before execution.
+- Wallet Connection: Users can link a Web3 wallet (such as MetaMask) to interact directly with the exchange and manage their transactions without relinquishing control of their assets.
+- Token Deployment: The platform supports creating new tokens that follow the ERC-20 standard, allowing anyone to launch and manage their own digital assets.
+- Order Types:
+  - Market Orders: Execute trades immediately at the best available price through the Automated Market Maker mechanism.
+  - Limit Orders: Orders are carried out only when the market reaches the user’s chosen price.
+  - Stop Orders: Orders activate only when a predefined threshold is hit; these are monitored off-chain until conditions are satisfied.
+- Partial Order: Orders can be partially completed if only part of the requested trade volume is available at the moment, ensuring no opportunity goes to waste.
+- Cancel Order: Open orders remain under the user’s control and can be withdrawn or canceled at any time before execution.
 
 ## Pre-requisites
 Modules to be installed before running the project:
