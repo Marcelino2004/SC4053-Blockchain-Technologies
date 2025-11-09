@@ -6,7 +6,7 @@ This project is a decentralized marketplace for exchanging digital assets on the
 The system uses a hybrid trading approach: an Automated Market Maker provides fast, on-chain swaps for immediate trades, while a separate off-chain order engine (implemented in Go) supports more advanced order types like limit and stop orders. This setup delivers a balance of convenience and control, enabling both quick transactions and precise order execution—without sacrificing decentralization or causing unnecessary gas costs.
 
 ## Tools used
-- Solidity: Writing the smart contracts
+- Solidity: Writing the smart contracts, using the MIT license
 - Go: Handling all the backend logic
 - Nextjs: Creating the frontend visuals
 - Hardhat: Framework for local testnet deployment
@@ -105,3 +105,11 @@ yarn run dev
 ```
 
 The frontend will run on http://localhost:3000. Copy and paste this in the web browser to see and interact with the frontend.
+
+## Possible Improvements
+- Introduce other order types like batch processing orders and conditional orders
+- Add other coins to the swap pool
+- Optimize the solidity code for minimal gas fees
+
+## Common Issue
+- Sometimes when loading the browser for the first time, it may be blank and has to be refreshed in order for the frontend to show.
