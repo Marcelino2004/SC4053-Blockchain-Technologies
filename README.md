@@ -77,10 +77,11 @@ yarn hardhat run scripts/createLP --network localhost
 - Create .env files for both the frontend and backend with the necessary environment variables.
 
 For Backend (go-orderbook/.env):
-dotenv
+```dotenv
 INFURA_API_URL=<Your Infura Project URL>
 PRIVATE_KEY=<Your Private Key for Deployment>
 CONTRACT_ADDRESS=<Deployed Smart Contract Address>
+```
 
 For Frontend (sc4053-frontend/.env.local):
 ```dotenv
