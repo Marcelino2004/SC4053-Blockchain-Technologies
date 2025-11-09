@@ -34,53 +34,74 @@ Modules to be installed before running the project:
 - Chain ID: 1337
 
 ## Set-up Instructions
-1. Clone the Repository
+
+### 1. Clone the Repository
+```bash
 git clone https://github.com/yourusername/DEXChange.git
 git submodule update --init --recursive
 cd DEXChange
-2. Install Dependencies
-Frontend (Next.js):
+```
 
+### 2. Install Dependencies
+- Frontend (Next.js):
+```bash
 cd sc4053-frontend
-npm install
-Backend (Go):
+yarn install
+```
 
+- Backend (Go):
+```bash
 cd go-orderbook
 go mod tidy
-3. Compile and Deploy Smart Contracts
-Go to the blkchain-orderbook directory, install Hardhat if necessary, and compile the Solidity smart contracts:
+```
 
+### 3. Compile and Deploy Smart Contracts
+- In the blkchain-orderbook directory, install Hardhat and compile the Solidity smart contracts:
+```bash
 cd blkchain-orderbook
 npm install
 npx hardhat compile
-Deploy the contracts to a local Ethereum testnet using Hardhat:
+```
 
+- Still in the blkchain-orderbook directory, deploy the contracts to a local Ethereum testnet using Hardhat:
+```bash
 npx hardhat node
 npx hardhat run scripts/deploy.js --network localhost
-This will deploy the contracts to a local testnet and provide contract addresses for configuration.
+```
+
+- Add liquidity to the pool (to try and trade)
+```bash
+yarn hardhat run scripts/createLP --network localhost
+```
 
 4. Configure Environment Variables
-Create .env files for both the frontend and backend with the necessary environment variables.
+- Create .env files for both the frontend and backend with the necessary environment variables.
 
-Backend (go-orderbook/.env):
-
+For Backend (go-orderbook/.env):
+```dotenv
 INFURA_API_URL=<Your Infura Project URL>
 PRIVATE_KEY=<Your Private Key for Deployment>
 CONTRACT_ADDRESS=<Deployed Smart Contract Address>
-Frontend (sc4053-frontend/.env.local):
-
+```
+For Frontend (sc4053-frontend/.env.local):
+```dotenv
 NEXT_PUBLIC_APP_URL=<Your application URL>
 NEXT_PUBLIC_WEB3_PROVIDER_URL=<Default RPC URL>
-5. Start the Backend (Go)
-Navigate to the backend directory and start the Go server:
+```
 
+5. Start the Backend (Go)
+- Go to the backend directory and start the Go server:
+```Go
+cd ..  #If you are still in the blkchain-orderbook directory
 cd go-orderbook
 go run main.go
-The backend will handle off-chain order matching and provide API endpoints for the frontend.
+```
 
 6. Start the Frontend (Next.js)
-Navigate to the frontend directory and run the development server:
-
+- Go to the frontend directory and run the development server:
+'''Javascript
 cd sc4053-frontend
 npm run dev
-The frontend should be running on http://localhost:3000.
+```
+The frontend will run on http://localhost:3000. Copy and paste this in the web browser to see and interact with the frontend.
+
