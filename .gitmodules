@@ -1,0 +1,3 @@
+[submodule "sc4053-frontend"]
+	path = sc4053-frontend
+	url = git@github.com:sanstzu/sc4053-frontend.git
