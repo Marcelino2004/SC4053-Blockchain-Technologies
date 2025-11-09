@@ -59,14 +59,14 @@ go mod tidy
 - In the blkchain-orderbook directory, install Hardhat and compile the Solidity smart contracts:
 ```bash
 cd blkchain-orderbook
-npm install
-npx hardhat compile
+yarn install
+yarn hardhat compile
 ```
 
 - Still in the blkchain-orderbook directory, deploy the contracts to a local Ethereum testnet using Hardhat:
 ```bash
-npx hardhat node
-npx hardhat run scripts/deploy.js --network localhost
+yarn hardhat node
+yarn hardhat run scripts/deploy.js --network localhost
 ```
 
 - Add liquidity to the pool (to try and trade)
@@ -101,7 +101,7 @@ go run main.go
 - Go to the frontend directory and run the development server:
 ```Javascript
 cd sc4053-frontend
-npm run dev
+yarn run dev
 ```
 The frontend will run on http://localhost:3000. Copy and paste this in the web browser to see and interact with the frontend.
 
