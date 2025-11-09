@@ -1,0 +1,76 @@
+[
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "LPAddress",
+          "type": "address"
+        }
+      ],
+      "name": "LPAdded",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenPair0",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "tokenPair1",
+          "type": "address"
+        }
+      ],
+      "name": "getLP",
+      "outputs": [
+        {
+          "internalType": "contract ILiquidityPool",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenPair0",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "tokenPair1",
+          "type": "address"
+        }
+      ],
+      "name": "registerTokenPair",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "tokenPairLPs",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]
