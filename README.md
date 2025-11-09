@@ -37,9 +37,7 @@ Modules to be installed before running the project:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/DEXChange.git
-git submodule update --init --recursive
-cd DEXChange
+git clone https://github.com/yourusername/SC4053-Blockchain-Technologies
 ```
 
 ### 2. Install Dependencies
